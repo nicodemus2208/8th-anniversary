@@ -1,0 +1,175 @@
+:root {
+  --primary-color: #e91e63;
+  --primary-dark: #880e4f;
+  --bg-color: #fce4ec;
+  --text-dark: #333;
+  --text-muted: #555;
+  --frame-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.hero {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  color: white;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.hero h1 { margin: 0; font-size: 2rem; }
+.subtitle { margin-top: 5px; font-size: 0.95rem; opacity: 0.9; }
+
+.main-container {
+  max-width: 650px;
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.photo-stack-wrapper {
+  margin-bottom: 60px;
+}
+
+.photo-stack-wrapper h2 {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+/* --- THE DRAGGABLE STACK --- */
+.stack-container {
+  position: relative;
+  width: 300px;
+  height: 360px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.stack-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--frame-color);
+  border-radius: 4px;
+  padding: 12px 12px 60px 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+}
+
+.stack-item:active { cursor: grabbing; }
+.stack-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid #eee;
+  pointer-events: none;
+}
+
+.stack-item .caption {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #444;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+}
+
+.stack-item:nth-last-child(1) { transform: rotate(-3deg) translateZ(0); }
+.stack-item:nth-last-child(2) { transform: rotate(4deg) translateZ(-10px); }
+.stack-item:nth-last-child(3) { transform: rotate(-5deg) translateZ(-20px); }
+.stack-item:nth-last-child(4) { transform: rotate(2deg) translateZ(-30px); }
+
+/* --- CONTENT BLOCKS (MATCHING YOUR IMAGE) --- */
+.content-block {
+  background-color: var(--frame-color);
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.section-title {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+/* Wishes List Configuration */
+.wishes-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wishes-list li {
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 30px;
+  line-height: 1.5;
+}
+
+.wishes-list li:before {
+  content: '❤️';
+  position: absolute;
+  left: 0;
+  top: 1px;
+}
+
+/* Individual Memory Cards */
+.memory-card {
+  background-color: var(--frame-color);
+  border: 1px solid #fce4ec;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.memory-card:last-child {
+  margin-bottom: 0;
+}
+
+.memory-date {
+  color: var(--primary-color);
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.memory-description {
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
